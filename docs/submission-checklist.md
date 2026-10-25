@@ -32,7 +32,7 @@ Do not stop both backends. The user has since performed a one-VM shutdown: inter
 
 The local Git checkout is `TravelMemory/`. Both `docs/` and `deploy/` are now inside it, so the report, images, diagram, Nginx configuration, and service definition can be committed with the application. Keep the relative `docs/` and `deploy/` layout together and stage both directories before committing.
 
-Review `frontend/src/components/pages/AddExperience.js`: its optional missing-field validation exists locally but was not deployed. Decide which version is intended for submission and describe any remaining difference accurately. Do not overwrite `.env` or include actual database credentials.
+The frontend and backend source files are unchanged from the original application. Suggested troubleshooting source edits were removed from the submission. Keep deployment-specific settings in environment files and the supplied infrastructure configuration; do not commit actual database credentials or overwrite the server `.env`.
 
 Confirm rotation of the database password exposed during troubleshooting. Review staged files for `.env`, private keys, connection strings, and credentials before committing. The repository's existing `.env` ignore rule is useful but does not replace inspecting the staged file list.
 

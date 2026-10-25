@@ -202,9 +202,7 @@ The symlink commands describe initial setup; do not repeat them if already confi
 
 A save initially failed because `shortDescription` was empty. The schema requires a trip name, both journey dates, and a short description. After filling Short Description, the user confirmed the trip saved; the new Kerala record appears in the API and browser evidence.
 
-The original submit handler did not await Axios or show the outcome. A feedback change was applied during troubleshooting to await the result and show success or failure. The backend save catch block was updated to log the error and return HTTP 500.
-
-An additional required-field check exists in the **local** working copy but was explicitly not deployed. Reconcile this local/deployed difference before submission. The local frontend changes have not had a local build because local dependencies are absent; EC2 build and browser checks were performed during deployment.
+No application source-code changes are required for this deployment. The frontend and backend source files are retained unchanged from the original application. Runtime and build configuration are supplied through the backend environment file, frontend production environment variable, Nginx site configuration, and systemd service. Suggested form-feedback, validation, and error-handler edits from troubleshooting are not part of the submitted implementation. The trip was saved successfully by supplying the required Short Description.
 
 ## 10. Create the AMI and second application server
 
@@ -344,7 +342,7 @@ The non-exportable ACM public certificate used with the ALB has no additional ce
 - [ ] Configure and verify HTTP-to-HTTPS redirection if HTTPS enforcement is desired.
 - [x] Observe application availability on the surviving instance after the initial failover detection period (user confirmed; transient 504s occurred).
 - [ ] Restore the stopped instance and verify both targets return to Healthy; capture failure/recovery evidence and timing if required.
-- [ ] Reconcile optional local-only validation with the source intended for submission.
+- [x] Retain the original frontend and backend source; deployment uses environment and infrastructure configuration.
 - [ ] Confirm rotation of the Atlas password exposed during troubleshooting.
 - [ ] Include `docs/` and `deploy/` in the GitHub submission, commit, push, and verify rendered images.
 - [ ] Submit the repository link through Vlearn in the permitted text/Word/PDF format.

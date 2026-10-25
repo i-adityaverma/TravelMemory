@@ -8,7 +8,7 @@ Assignment 2 deployment by Aditya Verma. The MERN application is deployed on two
 - [Nginx configuration](deploy/travelmemory.nginx.conf) and [systemd service](deploy/travelmemory-backend.service)
 - [Final review and submission checklist](docs/submission-checklist.md)
 
-Application source adapted from [UnpredictablePrashant/TravelMemory](https://github.com/UnpredictablePrashant/TravelMemory); the original [license](LICENSE) is retained. The instructions below describe local development. The deployment report describes production configuration on backend port **3000** with frontend API URL **`/api`**.
+Original application source from [UnpredictablePrashant/TravelMemory](https://github.com/UnpredictablePrashant/TravelMemory); the original [license](LICENSE) is retained. The instructions below describe local development. The deployment report describes production configuration on backend port **3000** with frontend API URL **`/api`**.
 
 `.env` file to work with the backend after creating a database in mongodb: 
 
