@@ -19,8 +19,8 @@ async function tripAdditionController(req, res){
         await tripDetail.save()
         res.send('Trip added Successfully')
     }catch(error){
-        console.log('ERROR')
-        res.send('SOMETHING WENT WRONG')
+        console.error('Trip save failed:', error)
+        res.status(500).send('Could not save trip')
     }
 }
 

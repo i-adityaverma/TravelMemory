@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Travel Memory deployment architecture</title><desc id="desc">DNS-only Cloudflare resolves the ALB. Two EC2 instances in different Availability Zones serve React and Express and connect to shared MongoDB Atlas. TLS terminates at the ALB.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker></defs><rect width="1200" height="720" fill="#fff"/>
+<g font-family="Arial,sans-serif" fill="#0f172a"><text x="40" y="32" font-size="23" font-weight="bold">Travel Memory — deployed architecture</text><rect x="375" y="240" width="750" height="215" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="7 4"/><text x="395" y="267" font-size="14">AWS VPC • ap-south-1 • two Availability Zones</text>
+<polyline points="310,110 420,110" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="365.0" y="101.0" font-size="12" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">HTTPS 443</text>
+<polyline points="175,155 175,220" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="175.0" y="178.5" font-size="12" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">DNS lookup</text>
+<polyline points="310,265 355,265 355,185 595,185 595,155" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="332.5" y="256.0" font-size="12" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Resolves ALB hostname</text>
+<polyline points="540,155 540,285" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="540.0" y="211.0" font-size="12" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">HTTP 80</text>
+<polyline points="680,155 945,220 945,285" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="812.5" y="178.5" font-size="12" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">HTTP 80</text>
+<polyline points="555,425 555,465 670,465 670,510" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="555.0" y="436.0" font-size="12" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Database TLS</text>
+<polyline points="945,425 945,465 830,465 830,510" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="945.0" y="436.0" font-size="12" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Database TLS</text>
+<polyline points="310,465 350,465 350,355 400,355" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="330.0" y="456.0" font-size="12" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="4" stroke-linejoin="round">Direct HTTP</text>
+<rect x="40" y="65" width="270" height="90" rx="12" fill="#dbeafe" stroke="#64748b"/><text x="175.0" y="95" text-anchor="middle" font-size="17" font-weight="bold">Browser</text>
+<text x="175.0" y="120" text-anchor="middle" font-size="14">travel.iadityalabs.xyz</text>
+<rect x="40" y="220" width="270" height="90" rx="12" fill="#fef3c7" stroke="#64748b"/><text x="175.0" y="250" text-anchor="middle" font-size="17" font-weight="bold">Cloudflare DNS only</text>
+<text x="175.0" y="275" text-anchor="middle" font-size="14">CNAME travel → ALB</text>
+<rect x="420" y="65" width="350" height="90" rx="12" fill="#e0e7ff" stroke="#64748b"/><text x="595.0" y="95" text-anchor="middle" font-size="17" font-weight="bold">Application Load Balancer</text>
+<text x="595.0" y="120" text-anchor="middle" font-size="14">HTTPS 443 / HTTP 80 • ACM TLS</text>
+<rect x="400" y="285" width="310" height="140" rx="12" fill="#dcfce7" stroke="#64748b"/><text x="555.0" y="315" text-anchor="middle" font-size="17" font-weight="bold">app-01 • ap-south-1b</text>
+<text x="555.0" y="340" text-anchor="middle" font-size="14">Nginx :80 • React files</text>
+<text x="555.0" y="363" text-anchor="middle" font-size="14">/api/ → Express :3000</text>
+<text x="555.0" y="386" text-anchor="middle" font-size="14">systemd backend service</text>
+<rect x="790" y="285" width="310" height="140" rx="12" fill="#dcfce7" stroke="#64748b"/><text x="945.0" y="315" text-anchor="middle" font-size="17" font-weight="bold">app-02 • ap-south-1a</text>
+<text x="945.0" y="340" text-anchor="middle" font-size="14">Nginx :80 • React files</text>
+<text x="945.0" y="363" text-anchor="middle" font-size="14">/api/ → Express :3000</text>
+<text x="945.0" y="386" text-anchor="middle" font-size="14">systemd backend service</text>
+<rect x="590" y="510" width="320" height="110" rx="12" fill="#ccfbf1" stroke="#64748b"/><text x="750.0" y="540" text-anchor="middle" font-size="17" font-weight="bold">MongoDB Atlas</text>
+<text x="750.0" y="565" text-anchor="middle" font-size="14">Shared database • TLS</text>
+<text x="750.0" y="588" text-anchor="middle" font-size="14">Access list: application IPs /32</text>
+<rect x="40" y="410" width="270" height="110" rx="12" fill="#f1f5f9" stroke="#64748b"/><text x="175.0" y="440" text-anchor="middle" font-size="17" font-weight="bold">Assignment direct access</text>
+<text x="175.0" y="465" text-anchor="middle" font-size="14">A: direct → app-01 public IPv4</text>
+<text x="175.0" y="488" text-anchor="middle" font-size="14">HTTP • operator IP restricted</text>
+<text x="40" y="670" font-size="14">Solid arrows: application traffic. Dashed arrows: DNS resolution or alternate direct access.</text><text x="40" y="695" font-size="14">Cloudflare does not proxy traffic. ALB health check: /api/hello. HTTP-to-HTTPS redirect is not yet recorded.</text></g></svg>

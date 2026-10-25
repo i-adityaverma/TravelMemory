@@ -17,14 +17,29 @@ export default function AddExperience() {
             featured: false,
             shortDescription: ""
     })
-    const submitForm = () => {
+    const submitForm = async () => {
+        if (!formdata.tripName.trim() || !formdata.startDateOfJourney ||
+            !formdata.endDateOfJourney || !formdata.shortDescription.trim()) {
+            window.alert("Please enter a trip name, both dates, and a short description.");
+            return;
+        }
         setLoading(true);
-        console.log(formdata)
-        axios.post(`${baseUrl}/trip`, formdata)
-        setLoading(false)
+        try {
+            const response = await axios.post(`${baseUrl}/trip`, formdata);
+            if (response.data !== "Trip added Successfully") {
+                throw new Error("The server could not save the trip. Please try again.");
+            }
+            window.alert("Trip saved successfully. Open Home to view it.");
+        } catch (error) {
+            window.alert(error.response
+                ? "The server could not save the trip. Please try again."
+                : error.message);
+        } finally {
+            setLoading(false);
+        }
     }
 
-    if(loading==true){
+    if(loading === true){
       return(
         <div>Loading...</div>
       )

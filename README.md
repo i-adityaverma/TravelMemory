@@ -1,5 +1,15 @@
 # Travel Memory
 
+Assignment 2 deployment by Aditya Verma. The MERN application is deployed on two EC2 instances across Availability Zones, behind an AWS Application Load Balancer, with Cloudflare DNS and ACM HTTPS.
+
+- Application: [travel.iadityalabs.xyz](https://travel.iadityalabs.xyz)
+- [Deployment report and screenshots](docs/deployment.md)
+- [Architecture preview](docs/architecture.svg) and [editable draw.io diagram](docs/architecture.drawio)
+- [Nginx configuration](deploy/travelmemory.nginx.conf) and [systemd service](deploy/travelmemory-backend.service)
+- [Final review and submission checklist](docs/submission-checklist.md)
+
+Application source adapted from [UnpredictablePrashant/TravelMemory](https://github.com/UnpredictablePrashant/TravelMemory); the original [license](LICENSE) is retained. The instructions below describe local development. The deployment report describes production configuration on backend port **3000** with frontend API URL **`/api`**.
+
 `.env` file to work with the backend after creating a database in mongodb: 
 
 ```
