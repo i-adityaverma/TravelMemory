@@ -26,7 +26,7 @@ Before claiming tested failover, perform a controlled test during a suitable mai
 5. Restore app-02: `sudo systemctl start travelmemory-backend`.
 6. Wait for both targets to become Healthy again and record the result.
 
-Do not stop both backends. The user has since performed a one-VM shutdown: intermittent 504s occurred initially, then service stabilized without changes after waiting. Eventual failover is user-confirmed; zero downtime is not demonstrated. Restore the stopped instance and confirm both targets become Healthy. Target-state screenshots and measured detection/recovery times would strengthen the evidence. See section 17 of the deployment report.
+Do not stop both backends. The user has since performed a one-VM shutdown: intermittent 504s occurred initially, then service stabilized without changes after waiting. Eventual failover is user-confirmed; zero downtime is not demonstrated. Restore the stopped instance and confirm both targets become Healthy. Target-state screenshots and measured detection/recovery times would strengthen the evidence. See section 14 of the deployment report.
 
 ## Package the repository
 
